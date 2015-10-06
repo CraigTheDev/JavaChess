@@ -7,6 +7,7 @@ package ChessBoard;
 
 import ChessPieces.ChessPieceLabel;
 import java.awt.Color;
+import java.awt.Graphics;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -17,17 +18,23 @@ import javax.swing.border.Border;
  *
  * @author Kevin
  */
-public class Square extends JPanel{
+public final class Square extends JPanel{
     
-    Border blackline;
+    Border blackline, border1, border2;
     public boolean state;
     ChessPieceLabel label;
      ImageIcon icon;
+     Graphics g;
+     public boolean tState;
      
-    public Square(String image) {
-            blackline = BorderFactory.createLineBorder(Color.YELLOW);
-            setBorder(blackline);
+    public Square() {
+          
+//           blackline = BorderFactory.createLineBorder(Color.WHITE);
+//           setBorder(blackline);
+        border1 = BorderFactory.createLineBorder(Color.RED);
+        border2 = BorderFactory.createLineBorder(Color.yellow);
             state = true;
+            tState = true;
             setColour();
             label = null;
             
@@ -36,6 +43,11 @@ public class Square extends JPanel{
     public void setState(boolean b) {
         this.state = b;
         setColour();
+    }
+    
+    public void setTState(){
+        tState = !tState;
+    changeBorderColour();
     }
     
     public void setColour(){
@@ -56,10 +68,21 @@ public class Square extends JPanel{
     }
   
     public String getPiece(){
-        String type = null;
+        String type;
        type = label.getPath();
        System.out.println(type);
        return type;
+    }
+
+    void changeBorderColour() {
+        
+        if(tState){
+          setBorder(border1);
+        }else{
+            
+            setBorder(border2);
+        }
+              
     }
     
 }
