@@ -9,7 +9,7 @@ import ChessPieces.*;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.ImageIcon;
+//import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -17,51 +17,60 @@ import javax.swing.JPanel;
  *
  * @author Kevin
  */
-public class ChessBoard extends JPanel{
+public final class ChessBoard extends JPanel{
     
     
     private final Square[][] grid;
     JLabel label;
     ChessPieces tCP;  
-      int y = 0, x = 0;
+    String img1;
+      //int y = 0,x= 0;
       
     public ChessBoard(){
           grid = new Square[8][8];
         setLayout(new GridLayout(8,8));
-         for(; x < grid.length; x++){
-            for(; y < grid.length; y++){
-                grid[y][x] = new Square(null);
+         for(int x = 0; x < grid.length; x++){
+            for(int y = 0; y < grid.length; y++){
+                grid[y][x] = new Square();
                 add(grid[y][x]);
                 
                 if ((x + y) % 2 == 0){
                     grid[y][x].setState(true);
-                  // label = new JLabel(new ImageIcon(new King("Black").imgPath));
                 }else{
                     grid[y][x].setState(false);
                 }
-                
-            }
-        } 
-        grid[y][x].addMouseListener(new MouseAdapter(){
-                    public void mousePressed(MouseEvent e)
+                 grid[y][x].addMouseListener(new MouseAdapter(){
+                    public void mouseClicked(MouseEvent e)
                     {
                         
-                        if(grid[y][x].label != null){
-                            grid[y][x].getPiece();
-                            
-                            
-                        }
-                        grid[y][x].getPiece();
+                        Square sq1, sq2;
+                        boolean pressed = false;
                         
+                        if(pressed){
+                            sq1 = (Square) e.getSource();
+                           if(img1 == null){
+                               img1 = sq1.getPiece();
+                               System.out.println(img1);
+                           }
+                        }else{
+                            if(img1 != null){
+                            sq2 = (Square) e.getSource();
+                            sq2.addPiece(img1);} 
+                        }
+                        
+                        Square sq = (Square) e.getSource();
+                       sq.setTState();
+                       
                     }
                 });
-                    
-         
-         
+            }
+        } 
          intiPieces();
-         
+       
+        
     }
     
+    //Initilises the pieces onto the board at start up
     public void intiPieces(){
          tCP = new Rook("Black");
          grid[0][0].addPiece(tCP.getImagePath());
@@ -81,8 +90,8 @@ public class ChessBoard extends JPanel{
          grid[7][0].addPiece(tCP.getImagePath());
          
          for(int i = 0; i < 8; i++){
-             tCP = new Pawn("Black");
-         grid[i][1].addPiece(tCP.getImagePath());
+            tCP = new Pawn("Black");
+            grid[i][1].addPiece(tCP.getImagePath());
          }
          
          tCP = new Rook("White");
