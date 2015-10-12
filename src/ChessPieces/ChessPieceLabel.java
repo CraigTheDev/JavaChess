@@ -26,12 +26,12 @@ public class ChessPieceLabel extends JLabel{
           // setMargin(new Insets(0,0,0,0));
         setIconTextGap(0);
     // setBorderPainted(false);
-        setBorder(null);
-        setText(null);
+       
         setSize(i.getImage().getWidth(null), i.getImage().getHeight(null));
     }
 
     public String getPath() {
+        icon.getImage().flush();
         return imgPath;
 
     }

@@ -6,6 +6,7 @@
 package gameExecution;
 
 import ChessBoard.ChessBoard;
+import java.io.IOException;
 import javax.swing.JFrame;
 
 /**
@@ -17,7 +18,7 @@ public class JavaChess extends JFrame{
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
        JFrame frame = new JFrame();
             ChessBoard panel = new ChessBoard();
         //ImageLabel label = new ImageLabel(new ImageIcon("BlackKing.jpg"));

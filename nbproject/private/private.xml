@@ -3,15 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Kevin/Desktop/JavaChess/src/ChessPieces/ChessPieceLabel.java</file>
-            <file>file:/C:/Users/Kevin/Desktop/JavaChess/src/ChessPieces/ChessPieces.java</file>
-            <file>file:/C:/Users/Kevin/Desktop/JavaChess/src/Movement/UserMovement.java</file>
-            <file>file:/C:/Users/Kevin/Desktop/JavaChess/src/ChessPieces/Knight.java</file>
-            <file>file:/C:/Users/Kevin/Desktop/JavaChess/src/ChessPieces/Pawn.java</file>
-            <file>file:/C:/Users/Kevin/Desktop/JavaChess/src/ChessPieces/Bishop.java</file>
-            <file>file:/C:/Users/Kevin/Desktop/JavaChess/src/ChessPieces/King.java</file>
+            <file>file:/C:/Users/Kevin/Desktop/JavaChess/src/ChessPieces/BlankSquare.java</file>
             <file>file:/C:/Users/Kevin/Desktop/JavaChess/src/ChessBoard/ChessBoard.java</file>
-            <file>file:/C:/Users/Kevin/Desktop/JavaChess/src/ChessPieces/Rook.java</file>
+            <file>file:/C:/Users/Kevin/Desktop/JavaChess/src/Notes.java</file>
             <file>file:/C:/Users/Kevin/Desktop/JavaChess/src/gameExecution/JavaChess.java</file>
             <file>file:/C:/Users/Kevin/Desktop/JavaChess/src/ChessBoard/Square.java</file>
         </group>

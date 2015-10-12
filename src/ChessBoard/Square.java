@@ -7,6 +7,11 @@ package ChessBoard;
 
 import ChessPieces.ChessPieceLabel;
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -17,25 +22,36 @@ import javax.swing.border.Border;
  *
  * @author Kevin
  */
-public class Square extends JPanel{
+public final class Square extends JPanel{
     
-    Border blackline;
+    Border blackline, border1, border2;
     public boolean state;
-    ChessPieceLabel label;
      ImageIcon icon;
+     Graphics g;
+     public boolean tState;
+     Image chessImage;
+     String imagePath;
      
-    public Square(String image) {
-            blackline = BorderFactory.createLineBorder(Color.YELLOW);
-            setBorder(blackline);
+    public Square() {
+          
+//           blackline = BorderFactory.createLineBorder(Color.WHITE);
+//           setBorder(blackline);
+        border1 = BorderFactory.createLineBorder(Color.RED);
+        border2 = BorderFactory.createLineBorder(Color.yellow);
             state = true;
+            tState = true;
             setColour();
-            label = null;
-            
+           
     }
     
     public void setState(boolean b) {
         this.state = b;
         setColour();
+    }
+    
+    public void setTState(){
+        tState = !tState;
+    changeBorderColour();
     }
     
     public void setColour(){
@@ -48,18 +64,30 @@ public class Square extends JPanel{
         }
     }
     
-    public void addPiece(String image){
+    public void setPieces(String image) throws IOException{
      //  icon = new ImageIcon(image);
-            label = new ChessPieceLabel(image);
-            this.add(label);
-//        System.out.println(label.getIcon().toString());
+        this.imagePath = image;
+            chessImage = ImageIO.read(new File(image));
+            
     }
   
-    public String getPiece(){
-        String type = null;
-       type = label.getPath();
-       System.out.println(type);
-       return type;
+    public String getPieces(){
+        return imagePath;
+    }
+
+    void changeBorderColour() {
+        
+        if(tState){
+          setBorder(border1);
+        }else{
+            
+            setBorder(border2);
+        }
+    }
+       @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(chessImage, 0, 0, 50, 50, null); // see javadoc for more info on the parameters            
     }
     
 }
